@@ -23,15 +23,16 @@ import { i18nMixin } from "mil-i18next";
 class myClass extends i18nMixin(...)
 ```
 
-### Optionnally override default properties
+### Optionally override default properties
 
 ```js
 constructor() {
     super();
-    this.ns = ["app", "common", "notification"]; /* default: ["app"] */
-    this.languageResources = '/path to translation files/{{lng}}/{{ns}}.json' /* default: '/assets/locales/{{lng}}/{{ns}}.json' */
-    this.fallbackLng = "fr"; /* defaut: "en" */
-    this.defaultNS = ["app"]; /* defaut: ["app"] */
+    this.ns = ["app", "common", "notification"];
+    this.languageResources = '/path to translation files/{{lng}}/{{ns}}.json'
+    this.fallbackLng = "fr";
+    this.defaultNS = ["app"];
+    this.debug = true;
     this.i18nextResources = {
       en: {
         app: {
@@ -48,6 +49,17 @@ constructor() {
     };
   }
 ```
+
+Properties reflect [i18next configuration options]('https://www.i18next.com/overview/configuration-options')
+
+| Property            | Type    | i18next Option      | Default                               |
+| ------------------- | ------- | ------------------- | ------------------------------------- |
+| `ns`                | Array   | `ns`                | ['app']                               |
+| `languageResources` | String  | `languageResources` | '/assets/locales/{{lng}}/{{ns}}.json' |
+| `fallbackLng`       | String  | `fallbackLng`       | 'en'                                  |
+| `defaultNS`         | String  | `defaultNS`         | ['app']                               |
+| `debug`             | Boolean | `debug`             | true                                  |
+| `i18nextResources`  | Object  | `resources`         | {}                                    |
 
 Translation file load is asynchronous. Any translations that can be lazy-loaded should be keyed in translation files. To avoid unpleasant text flashing, all other translations should be keyed in 'this.i18nextResources'
 

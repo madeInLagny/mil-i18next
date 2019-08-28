@@ -17,6 +17,8 @@ export const i18nMixin = baseClass =>
         defaultNS: { type: String },
         /**Path to translation files. */
         languageResources: { type: String },
+        /**Control debug mode (in console). */
+        debug: { type: Boolean },
         /**I18 object. */
         i18n: { type: Object }
       };
@@ -36,7 +38,7 @@ export const i18nMixin = baseClass =>
         .use(backend)
         .use(LanguageDetector)
         .init({
-          debug: true,
+          debug: this.debug,
           defaultNS: this.defaultNS || "app",
           ns: this.ns || ["app"],
           fallbackLng: this.fallbackLng || "en",
