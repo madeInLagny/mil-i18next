@@ -1,0 +1,20 @@
+{
+  "name": "mil-i18next",
+  "description": "Javascript i18next mixin for webcomponents",
+  "main": "mil-i18next.js",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0",
+    "i18next": "^17.0.12",
+    "i18next-browser-languagedetector": "^3.0.3",
+    "i18next-xhr-backend": "^3.1.2",
+    "lit-element": "^2.2.1"
+  },
+  "devDependencies": {
+    "@polymer/iron-demo-helpers": "^3.1.0",
+    "@polymer/test-fixture": "^4.0.2",
+    "@webcomponents/webcomponentsjs": "^2.0.0",
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "wct-mocha": "^1.0.1"
+  }
+}
