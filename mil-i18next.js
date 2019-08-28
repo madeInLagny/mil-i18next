@@ -7,26 +7,18 @@ export const i18nMixin = baseClass =>
   class extends baseClass {
     static get properties() {
       return {
-        /** Namespaces to be loaded. */
-        ns: { type: Array },
-        /**Keys to be loaded before i18next renders. */
+        i18NextNs: { type: Array },
         i18nextResources: { type: Object },
-        /**Fallback language. */
-        fallbackLng: { type: String },
-        /**Default namespace. */
-        defaultNS: { type: String },
-        /**Path to translation files. */
-        languageResources: { type: String },
-        /**Control debug mode (in console). */
-        debug: { type: Boolean },
-        /**I18 object. */
-        i18n: { type: Object }
+        i18NextFallbackLng: { type: String },
+        i18NextDefaultNS: { type: String },
+        i18NextFilePath: { type: String },
+        i18n:{type:Object}
       };
     }
 
     connectedCallback() {
       super.connectedCallback();
-
+    
       this.i18n = i18next.createInstance();
       this.i18n.on("initialized", options => {
         this.requestUpdate();
@@ -38,24 +30,19 @@ export const i18nMixin = baseClass =>
         .use(backend)
         .use(LanguageDetector)
         .init({
-          debug: this.debug || true,
-          defaultNS: this.defaultNS || "app",
-          ns: this.ns || ["app"],
-          fallbackLng: this.fallbackLng || "en",
+          debug: false,
+          defaultNS: this.i18NextDefaultNS || "app",
+          ns: this.i18NextNs || ["app"],
+          fallbackLng: this.i18NextFallbackLng || "en",
           partialBundledLanguages: true,
           resources: this.i18nextResources,
           backend: {
             loadPath:
-              this.languageResources || "/bassets/locales/{{lng}}/{{ns}}.json"
+              this.i18NextFilePath || "/bassets/locales/{{lng}}/{{ns}}.json"
           }
         });
     }
 
-    /**
-     * Changes language after initialisation.
-     *
-     * @param {String} lang Language to apply.
-     */
     changeLanguage(lang) {
       this.i18n.changeLanguage(lang);
     }

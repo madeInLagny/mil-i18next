@@ -28,12 +28,12 @@ class myClass extends i18nMixin(...)
 ```js
 constructor() {
     super();
-    this.ns = ["app", "common", "notification"];
-    this.languageResources = '/path to translation files/{{lng}}/{{ns}}.json'
-    this.fallbackLng = "fr";
-    this.defaultNS = ["app"];
-    this.debug = true;
-    this.i18nextResources = {
+    this.i18NextNs = ["app", "common", "notification"];
+    this.i18NextFilePath = '/path to translation files/{{lng}}/{{ns}}.json'
+    this.i18NextFallbackLng = "fr";
+    this.i18NextDefaultNS = ["app"];
+    this.i18NextDebug = true;
+    this.i18NextResources = {
       en: {
         app: {
           key1: "Translations keyed here will be loaded before i18next renders",
@@ -54,14 +54,14 @@ Properties reflect [i18next configuration options]('https://www.i18next.com/over
 
 | Property            | Type    | i18next Option      | Default                               |
 | ------------------- | ------- | ------------------- | ------------------------------------- |
-| `ns`                | Array   | `ns`                | ['app']                               |
-| `languageResources` | String  | `languageResources` | '/assets/locales/{{lng}}/{{ns}}.json' |
-| `fallbackLng`       | String  | `fallbackLng`       | 'en'                                  |
-| `defaultNS`         | String  | `defaultNS`         | ['app']                               |
-| `debug`             | Boolean | `debug`             | true                                  |
-| `i18nextResources`  | Object  | `resources`         | {}                                    |
+| `i18NextNs`                | Array   | `ns`                | ['app']                               |
+| `i18NextFilePath` | String  | `languageResources` | '/assets/locales/{{lng}}/{{ns}}.json' |
+| `i18NextFallbackLng`       | String  | `fallbackLng`       | 'en'                                  |
+| `i18NextDefaultNS`         | String  | `defaultNS`         | ['app']                               |
+| `i18NextDebug`             | Boolean | `debug`             | false                                  |
+| `i18NextResources`  | Object  | `resources`         | {}                                    |
 
-Translation file load is asynchronous. Any translations that can be lazy-loaded should be keyed in translation files. To avoid unpleasant text flashing, all other translations should be keyed in 'this.i18nextResources'
+Translation file load is asynchronous. Any translations that can be lazy-loaded should be keyed in translation files. `this.i18NextFilePath` must be updated accordingly. To avoid unpleasant text flashing, all other translations should be keyed in 'this.i18nextResources'
 
 ### Use in your element
 
