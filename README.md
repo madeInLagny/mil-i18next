@@ -61,7 +61,7 @@ Properties reflect [i18next configuration options]('https://www.i18next.com/over
 | `i18NextDebug`             | Boolean | `debug`             | false                                  |
 | `i18NextResources`  | Object  | `resources`         | {}                                    |
 
-Translation file load is asynchronous. Any translations that can be lazy-loaded should be keyed in translation files. `this.i18NextFilePath` must be updated accordingly. To avoid unpleasant text flashing, all other translations should be keyed in 'this.i18nextResources'
+Translation file load is asynchronous. Any translations that can be lazy-loaded should be keyed in translation files. `this.i18NextFilePath` must be updated accordingly. To avoid unpleasant text flashing, all other translations should be keyed in `this.i18NextResources`
 
 ### Use in your element
 
