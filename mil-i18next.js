@@ -38,7 +38,7 @@ export const i18nMixin = baseClass =>
         .use(backend)
         .use(LanguageDetector)
         .init({
-          debug: this.debug,
+          debug: this.debug || true,
           defaultNS: this.defaultNS || "app",
           ns: this.ns || ["app"],
           fallbackLng: this.fallbackLng || "en",
