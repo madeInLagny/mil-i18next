@@ -11,13 +11,13 @@ export const i18nMixin = baseClass =>
         i18NextFallbackLng: { type: String },
         i18NextDefaultNS: { type: String },
         i18NextFilePath: { type: String },
-        i18n:{type:Object}
+        i18NextDebug: { type: Boolean },
+        i18n: { type: Object }
       };
     }
 
     connectedCallback() {
       super.connectedCallback();
-    
       this.i18n = i18next.createInstance();
       this.i18n.on("initialized", options => {
         this.requestUpdate();
@@ -29,7 +29,7 @@ export const i18nMixin = baseClass =>
         .use(backend)
         .use(LanguageDetector)
         .init({
-          debug: false,
+          debug: this.i18NextDebug || false,
           defaultNS: this.i18NextDefaultNS || "app",
           ns: this.i18NextNs || ["app"],
           fallbackLng: this.i18NextFallbackLng || "en",
